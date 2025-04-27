@@ -10,13 +10,7 @@ endif
 dev:
 	cp .env-example .env
 	@command -v uv >/dev/null 2>&1 || { echo "uv is not installed. Please install it before running this target."; exit 1; }
-	uv venv && \
-	( \
-	. .venv/bin/activate && \
-	uv sync --all-groups && \
-	echo "Virtual environment created and dependencies installed." && \
-	echo "To activate the virtual environment, run: . .venv/bin/activate" \
-	)
+	uv sync --all-groups
 
 venv:
 	python3 -m venv .venv
