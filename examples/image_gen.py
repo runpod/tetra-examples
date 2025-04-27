@@ -6,7 +6,7 @@ from tetra_rp import remote, LiveServerless
 
 # Configuration for a GPU resource
 sd_config = LiveServerless(
-    gpuIds="NVIDIA GeForce RTX 4090",
+    gpuIds="AMPERE_16",
     workersMax=1,
     name="example_image_gen_server",
 )

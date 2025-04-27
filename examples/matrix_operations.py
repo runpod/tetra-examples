@@ -7,7 +7,7 @@ load_dotenv()
 
 # Configuration for a GPU resource
 gpu_config = LiveServerless(
-    gpuIds="NVIDIA H200",
+    gpuIds="HOPPER_141",
     workersMax=1,
     name="example_matrix_operations_server",
 )
