@@ -35,47 +35,10 @@ def inspect_gpu():
         raise Exception("No CUDA-compatible GPU found.")
 
 
-@remote(
-    resource_config=gpu_config,
-    dependencies=["torch"],
-)
-def run_tensor_test():
-    import torch
-    import time
-
-    # Running a more advanced tensor test: large-scale 3D tensor operations
-
-    # Create large 3D tensors on GPU
-    a = torch.randn(500, 500, 500, device="cuda")
-    b = torch.randn(500, 500, 500, device="cuda")
-
-    # Start timing
-    start = time.time()
-
-    # Perform element-wise multiplication, summation, and matrix multiplication
-    c = a * b
-    d = torch.sum(c)
-    e = torch.matmul(a.view(500, -1), b.view(-1, 500))
-
-    torch.cuda.synchronize()  # Wait for GPU to finish
-    end = time.time()
-
-    return {
-        "elementwise_multiplication_completed": True,
-        "summation_result": d.item(),
-        "matrix_multiplication_shape": e.shape,
-        "execution_time_seconds": round(end - start, 3),
-    }
-
-
 async def main():
     print("\nInspecting GPU...")
     gpu_info = await inspect_gpu()
     print(f"\nGPU Info: {gpu_info}")
-
-    print("\nRunning tensor test...")
-    test_result = await run_tensor_test()
-    print(f"\nTest result: {test_result}")
 
 
 if __name__ == "__main__":
