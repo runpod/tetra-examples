@@ -2315,7 +2315,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.0.2" },
     { name = "pillow", specifier = ">=11.2.1" },
     { name = "scikit-learn", specifier = ">=1.6.1" },
-    { name = "tetra-rp", specifier = ">=0.1.1" },
+    { name = "tetra-rp", specifier = "~=0.1.0" },
     { name = "torch", specifier = ">=2.7.0" },
     { name = "torch-geometric", specifier = ">=2.6.1" },
 ]
