@@ -118,7 +118,7 @@ jmespath==1.0.1
     # via
     #   boto3
     #   botocore
-joblib==1.4.2
+joblib==1.5.0
     # via scikit-learn
 markdown-it-py==3.0.0
     # via rich
@@ -167,7 +167,7 @@ psutil==7.0.0
     # via torch-geometric
 py-cpuinfo==9.0.0
     # via runpod
-pycares==4.7.0
+pycares==4.8.0
     # via aiodns
 pycparser==2.22
     # via cffi
@@ -226,7 +226,7 @@ scikit-learn==1.6.1
     # via tetra-examples (pyproject.toml)
 scipy==1.15.2
     # via scikit-learn
-setuptools==80.1.0
+setuptools==80.3.1
     # via torch
 shellingham==1.5.4
     # via typer
@@ -238,7 +238,7 @@ starlette==0.46.2
     # via fastapi
 sympy==1.14.0
     # via torch
-tetra-rp==0.1.3
+tetra-rp==0.1.4
     # via tetra-examples (pyproject.toml)
 threadpoolctl==3.6.0
     # via scikit-learn
