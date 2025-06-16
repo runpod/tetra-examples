@@ -7,7 +7,6 @@ load_dotenv()
 
 # Configuration for a simple resource
 simple_config = LiveServerless(
-    workersMax=1,
     name="example_hello_world",
 )
 

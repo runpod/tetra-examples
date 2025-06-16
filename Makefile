@@ -9,16 +9,19 @@ endif
 
 dev:
 	@command -v uv >/dev/null 2>&1 || { echo "uv is not installed. Please install it before running this target."; exit 1; }
-	@$(MAKE) update
+	@$(MAKE) install
 
-venv: requirements
-	python3 -m venv .venv
-	. .venv/bin/activate && \
-	pip install pip --upgrade && \
-	pip install -r requirements.txt
+install:
+	uv sync
 
-requirements:
+update: install
 	uv pip compile --upgrade pyproject.toml > requirements.txt
-
-update: requirements
 	uv pip sync requirements.txt
+
+venv:
+	python3 -m venv .venv
+
+pip: venv
+	. .venv/bin/activate && \
+	pip install --upgrade pip && \
+	pip install -r requirements.txt
