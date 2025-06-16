@@ -2,12 +2,11 @@ import asyncio
 import base64
 import io
 from PIL import Image
-from tetra_rp import remote, LiveServerless
+from tetra_rp import remote, LiveServerless, GpuGroup
 
 # Configuration for a GPU resource
 sd_config = LiveServerless(
-    gpuIds="AMPERE_16",
-    workersMax=1,
+    gpus=[GpuGroup.AMPERE_80],
     name="example_image_gen_server",
 )
 

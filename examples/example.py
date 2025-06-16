@@ -7,8 +7,6 @@ load_dotenv()
 
 # Configuration for a GPU resource
 gpu_config = LiveServerless(
-    gpuIds="any",
-    workersMax=1,
     name="example_live_server",
 )
 
