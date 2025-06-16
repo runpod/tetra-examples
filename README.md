@@ -2,7 +2,7 @@
 A collection of examples of using Tetra to run workflows on RunPod
 
 ## Requirements
-- Python 3.9 to 3.12
+- Python 3.9 to 3.13
 - RunPod Account ([sign up](https://www.runpod.io/console/signup))
 - RunPod API Key ([how-to](https://docs.runpod.io/get-started/api-keys))
 - UV Python Package Manager ([how-to](https://docs.astral.sh/uv/guides/install-python/)) *(optional)*

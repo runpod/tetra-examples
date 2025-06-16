@@ -1,10 +1,10 @@
 .PHONY: dev
 
-# Ensure Python version is between 3.9 and 3.12
+# Ensure Python version is between 3.9 and 3.13
 python_version := $(shell python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 
-ifeq (,$(filter $(python_version),3.9 3.10 3.11 3.12))
-$(error Python version $(python_version) is not supported. Please use Python >= 3.9 and <= 3.12)
+ifeq (,$(filter $(python_version),3.9 3.10 3.11 3.12 3.13))
+$(error Python version $(python_version) is not supported. Please use Python >= 3.9 and < 3.14)
 endif
 
 dev:
