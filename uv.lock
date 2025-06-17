@@ -2357,7 +2357,7 @@ wheels = [
 
 [[package]]
 name = "runpod"
-version = "1.7.9"
+version = "1.7.12"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp", extra = ["speedups"] },
@@ -2380,9 +2380,9 @@ dependencies = [
     { name = "urllib3", version = "2.4.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "watchdog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/94/cb/dd8487587bac24c0211dca752541d5a8ea1ff253f123399de8009110ddb0/runpod-1.7.9.tar.gz", hash = "sha256:da91c5546bc052797816a00ef2974dcaa55016091f26365503c6c566e3917a8c", size = 267493 }
+sdist = { url = "https://files.pythonhosted.org/packages/98/42/e6d268e374bdc0f2dffd8a27ac065700ce6fa7dfc4c98c41fbe9ee9ecbff/runpod-1.7.12.tar.gz", hash = "sha256:085a5454dfcb177a7e99c9aba92ce7811ba8f4bd5dc30f4d9933f94016a68bd1", size = 276363 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4e/d7/1dba070a0f8b6dadc4230d859ff630bec0790200ade401367a2556135a10/runpod-1.7.9-py3-none-any.whl", hash = "sha256:e0f6dd245c839ca05da9c86014307d1ef245979f5f1db0cbeceb83b7483287a5", size = 138470 },
+    { url = "https://files.pythonhosted.org/packages/dd/48/0943c01426e5bbc09b0582f240b79411d2ce85aeff360c8021ea86b96006/runpod-1.7.12-py3-none-any.whl", hash = "sha256:54e032da26e74c16ad6e93528df3ff0e7d3bbf2ddb9dde502d5818c1f934e3e4", size = 148430 },
 ]
 
 [[package]]
@@ -2644,14 +2644,14 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.0.2" },
     { name = "pillow", specifier = ">=11.2.1" },
     { name = "scikit-learn", specifier = ">=1.6.1" },
-    { name = "tetra-rp", specifier = "~=0.1.0" },
+    { name = "tetra-rp" },
     { name = "torch", specifier = ">=2.7.0" },
     { name = "torch-geometric", specifier = ">=2.6.1" },
 ]
 
 [[package]]
 name = "tetra-rp"
-version = "0.1.1"
+version = "0.1.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cloudpickle" },
@@ -2659,9 +2659,9 @@ dependencies = [
     { name = "python-dotenv" },
     { name = "runpod" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/47/bb/26f98fdfd541ea93af5a5b7ef145bd0573de608cdc0e75b56607f52f62fa/tetra_rp-0.1.1.tar.gz", hash = "sha256:db32ff8ed7d6596ed00bf76ebf2c2f216861862e04e91917ae41cc041a87ae74", size = 19603 }
+sdist = { url = "https://files.pythonhosted.org/packages/69/0a/9d98039a6c64f50f028a5d8ab6d2a2fad2929c9ebb3f8cc0a692b15a7dad/tetra_rp-0.1.5.tar.gz", hash = "sha256:f8bfdc0470dae2fede1d7922232830a877f1ba83506cd367d3b23b8574c48060", size = 20365 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/69/d1/8c72ee610fe690e78b6974f126375bc4878d21d60ddd4787c7d81be0202b/tetra_rp-0.1.1-py3-none-any.whl", hash = "sha256:f483206c98ec465a0beac2b29e6e94588c0928a521b986c8022ede0a4112f1da", size = 22269 },
+    { url = "https://files.pythonhosted.org/packages/db/4a/880a75f9baecfa1ed962591e60bcc13b5a5aad2e3e5f001727e37c589a87/tetra_rp-0.1.5-py3-none-any.whl", hash = "sha256:e0a57c72043325aed94fd8b63ac31158c3e0a8210bf119f4f1eb67de12e0f1c5", size = 23260 },
 ]
 
 [[package]]
