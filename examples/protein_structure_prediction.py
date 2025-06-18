@@ -1,9 +1,6 @@
 import asyncio
-from dotenv import load_dotenv
 from tetra_rp import remote, LiveServerless, GpuGroup
 
-# Load environment variables from .env file
-load_dotenv()
 
 # Configuration for a GPU resource
 gpu_config = LiveServerless(
