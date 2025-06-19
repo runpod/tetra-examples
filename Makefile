@@ -25,3 +25,8 @@ pip: venv
 	. .venv/bin/activate && \
 	pip install --upgrade pip && \
 	pip install -r requirements.txt
+
+clean:
+	rm -rf dist build *.egg-info .tetra_resources.pkl
+	find . -type d -name __pycache__ -exec rm -rf {} +
+	find . -type f -name "*.pyc" -delete
