@@ -175,3 +175,5 @@ cython_debug/
 .pypirc
 .DS_Store
 .tetra_resources.pkl
+
+CLAUDE.md
