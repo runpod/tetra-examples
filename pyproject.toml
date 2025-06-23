@@ -1,9 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "tetra-examples"
 version = "0.2.0"
-description = "A collection of examples of using Tetra to run workflows on RunPod"
+description = "A collection of examples of using Tetra to run workflows on Runpod"
 readme = "README.md"
 requires-python = ">=3.9,<3.14"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Runpod", email = "help@runpod.io"},
+]
+keywords = ["tetra", "runpod", "distributed-computing", "gpu", "serverless"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Distributed Computing",
+]
 dependencies = [
     "diffusers>=0.33.1",
     "numpy>=2.0.2",
@@ -12,4 +35,20 @@ dependencies = [
     "tetra-rp~=0.2.0",
     "torch>=2.7.0",
     "torch-geometric>=2.6.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/runpod/tetra-examples"
+Repository = "https://github.com/runpod/tetra-examples"
+Issues = "https://github.com/runpod/tetra-examples/issues"
+Documentation = "https://docs.runpod.io/"
+
+[tool.hatch.build.targets.wheel]
+packages = ["examples"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/examples",
+    "/README.md",
+    "/LICENSE",
 ]
