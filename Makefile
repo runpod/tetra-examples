@@ -15,6 +15,8 @@ install:
 	uv sync --all-groups
 
 update: install
+	uv lock --upgrade
+	uv sync --all-groups
 	uv pip compile --upgrade pyproject.toml > requirements.txt
 	uv pip sync requirements.txt
 
