@@ -2626,7 +2626,7 @@ wheels = [
 [[package]]
 name = "tetra-examples"
 version = "0.2.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "diffusers" },
     { name = "numpy", version = "2.0.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
@@ -2644,23 +2644,23 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.0.2" },
     { name = "pillow", specifier = ">=11.2.1" },
     { name = "scikit-learn", specifier = ">=1.6.1" },
-    { name = "tetra-rp", specifier = "~=0.2.0" },
+    { name = "tetra-rp", specifier = ">=0.4.0" },
     { name = "torch", specifier = ">=2.7.0" },
     { name = "torch-geometric", specifier = ">=2.6.1" },
 ]
 
 [[package]]
 name = "tetra-rp"
-version = "0.2.0"
+version = "0.4.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cloudpickle" },
     { name = "python-dotenv" },
     { name = "runpod" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c2/89/0daca2f51617fb7034025481f1c730b833628eec6899124208f159ffa880/tetra_rp-0.2.0.tar.gz", hash = "sha256:78b994aefaadac3ff5a06783662224f6dd1d01616ec05a8a50f86a7c2ca7dd01", size = 26184 }
+sdist = { url = "https://files.pythonhosted.org/packages/45/63/8abc929fe7f3e1ef3bb3f5ea5538ff61adcca2a274cd56f03f463ccf394d/tetra_rp-0.4.1.tar.gz", hash = "sha256:ff936b95b5c7ce5207d5911d60abe8c5da0170a9ed3d6b9d3759133431510427", size = 32131 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d5/5c/44996888a1fe2d2cd1c12481238fd99e1367a924872dc5b3a1371f8d5e5f/tetra_rp-0.2.0-py3-none-any.whl", hash = "sha256:97abfa86663197202d4aa599be4a0b1c31c9337849874cefbd4ff2c4e0fb4337", size = 28387 },
+    { url = "https://files.pythonhosted.org/packages/4a/5f/3cd5f623db94b1591710a5750cbf0c192193dc9ab3c4704c47542c01f728/tetra_rp-0.4.1-py3-none-any.whl", hash = "sha256:209525c76e9d44744724857c67b66f13f854beee5af942fb72f663b0447e51ec", size = 33679 },
 ]
 
 [[package]]

@@ -12,7 +12,7 @@ dev:
 	@$(MAKE) install
 
 install:
-	uv sync
+	uv sync --all-groups
 
 update: install
 	uv pip compile --upgrade pyproject.toml > requirements.txt
