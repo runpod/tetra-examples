@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/runpod/tetra-examples/compare/v0.1.0...v0.2.0) (2025-06-26)
+
+
+### Features
+
+* CPU/GPU Endpoints and CPU/GPU Live Serverless  ([#14](https://github.com/runpod/tetra-examples/issues/14)) ([7ad9f44](https://github.com/runpod/tetra-examples/commit/7ad9f44117d68e85a70dd191cd5b56c00755e1f2))
+
 ## 0.1.0 (2025-06-23)
 
 
