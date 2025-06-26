@@ -3,14 +3,14 @@ from tetra_rp import remote, LiveServerless
 
 
 # Configuration for a GPU resource
-gpu_config = LiveServerless(
-    name="example_live_server",
+live_gpu = LiveServerless(
+    name="example_live_gpu",
 )
 
 
 # Initialize the model server and save to disk
 @remote(
-    resource_config=gpu_config,
+    resource_config=live_gpu,
     dependencies=["scikit-learn", "numpy", "torch"],
 )
 def initialize_model():
@@ -52,7 +52,7 @@ def initialize_model():
 
 
 # Make predictions using the model loaded from disk
-@remote(resource_config=gpu_config)
+@remote(resource_config=live_gpu)
 def predict(features):
     """Make predictions using the model loaded from disk."""
     import numpy as np
@@ -100,4 +100,4 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"❌ An error occurred: {e}")
