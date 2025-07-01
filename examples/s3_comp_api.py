@@ -3,6 +3,13 @@
 # using the RunPod API. It demonstrates how to use the remote function decorator
 # to run code on a remote GPU instance, and how to handle S3 Compatible API operations on Runpod with boto3.
 
+# Set up your AWS credentials as environment variables:
+# export AWS_ACCESS_KEY_ID=your_access_key_id
+# export AWS_SECRET_ACCESS_KEY=your_secret_access_key
+# replace RUNPOD_S3_ENDPOINT with your Runpod S3 endpoint if different,
+# e.g., https://s3api-eur-is-1.runpod.io/
+# replace <RUNPOD_VOLUME_ID> with your actual Runpod volume ID, e.g., p23s969vxz
+
 
 import asyncio
 import os
@@ -56,14 +63,14 @@ def create_and_upload_image():
     )
 
     s3_client.put_object(
-        Bucket="<RUNPOD_VOLUME_ID>",  # Change this to your volume ID
+        Bucket="p23s969vxz",  # Change this to your volume ID
         Key="test_image.png",
         Body=img_bytes,
         ContentType="image/png",
     )
 
     print("Upload complete!")
-    return "s3://<RUNPOD_VOLUME_ID>/test_image.png"
+    return "s3://p23s969vxz/test_image.png"
 
 
 def download_image_from_s3(s3_path: str, local_filename: str):
