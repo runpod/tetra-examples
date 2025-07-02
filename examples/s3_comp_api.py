@@ -17,7 +17,7 @@ from tetra_rp import remote, LiveServerless, GpuGroup, PodTemplate
 
 # Simple GPU config
 gpu_config = LiveServerless(
-    name="simple-s3-testssfsfkjkjs",
+    name="simple-s3-example",
     gpus=[GpuGroup.AMPERE_24],
     template=PodTemplate(
         containerDiskInGb=30,
@@ -64,13 +64,13 @@ def create_and_upload_image():
 
     s3_client.put_object(
         Bucket="p23s969vxz",  # Change this to your volume ID
-        Key="test_image.png",
+        Key="example_image.png",
         Body=img_bytes,
         ContentType="image/png",
     )
 
     print("Upload complete!")
-    return "s3://p23s969vxz/test_image.png"
+    return "s3://p23s969vxz/example_image.png"
 
 
 def download_image_from_s3(s3_path: str, local_filename: str):
@@ -107,7 +107,7 @@ def download_image_from_s3(s3_path: str, local_filename: str):
 
 # Add this to your main function:
 async def main():
-    print("Simple S3 Test")
+    print("Simple S3 example")
 
     # Check credentials
     if not os.getenv("AWS_ACCESS_KEY_ID"):
@@ -123,7 +123,7 @@ async def main():
     print(f"Result: {result}")
 
     # Download it locally
-    download_image_from_s3(result, "downloaded_test_image.png")
+    download_image_from_s3(result, "downloaded_example_image.png")
     print("Complete workflow: Generate → Upload → Download!")
 
 
