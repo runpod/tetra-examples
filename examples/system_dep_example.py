@@ -47,52 +47,65 @@ def generate_image_with_stable_diffusion(
     # Check if CUDA is available
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    # Load the Stable Diffusion pipeline
+    # Load the Stable Diffusion pipeline (using float32 for stability)
     pipe = StableDiffusionPipeline.from_pretrained(
         model_id,
-        torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+        torch_dtype=torch.float32,  # Use float32 for better numerical stability
         safety_checker=None,
         requires_safety_checker=False,
+        use_safetensors=True,
     )
     pipe = pipe.to(device)
 
-    # Enable memory efficient attention if available
+    # Enable memory optimizations
     if hasattr(pipe, "enable_attention_slicing"):
         pipe.enable_attention_slicing()
+    
+    if device == "cuda" and hasattr(pipe, "enable_model_cpu_offload"):
+        pipe.enable_model_cpu_offload()
 
-    # Generate image
-    with torch.autocast(device):
-        image = pipe(
-            prompt,
-            num_inference_steps=num_steps,
-            guidance_scale=7.5,
-            height=512,
-            width=512,
-        ).images[0]
+    # Generate image without autocast to avoid numerical issues
+    image = pipe(
+        prompt,
+        num_inference_steps=num_steps,
+        guidance_scale=7.5,
+        height=512,
+        width=512,
+    ).images[0]
 
     return image
 
 
+@remote(
+    resource_config=sd_config,
+    system_dependencies=["git", "wget", "ffmpeg", "libgl1-mesa-glx", "libglib2.0-0", "libsm6", "libxext6", "libxrender-dev", "libgomp1"]
+)
+def get_ffmpeg_version():
+    import subprocess
+    result = subprocess.run(["ffmpeg", "-version"], capture_output=True, text=True, check=True)
+    first_line = result.stdout.splitlines()[0]
+    return first_line
+
+
 async def main():
+    prompt = "Superman and batman fighting with spiderman"
+    
     # Generate an image
     print("Generating image...")
-    result = await generate_image_with_stable_diffusion(
-        prompt="Superman and batman fighting with spiderman",
-        negative_prompt="blurry, distorted, low quality, text, watermark",
-        width=768,
-        height=512,
-    )
+    result_image = await generate_image_with_stable_diffusion(prompt=prompt)
+    
+    # Get FFmpeg version
+    ffmpeg_version = await get_ffmpeg_version()
+    print("Image generation completed.")
+    print(f"FFmpeg version: {ffmpeg_version}")
 
-    # Save the image
-    img_data = base64.b64decode(result["image"])
-    image = Image.open(io.BytesIO(img_data))
-
-    # Save to file
+    # Save the image directly (result_image is already a PIL Image)
     output_file = "knight.png"
-    image.save(output_file)
+    result_image.save(output_file)
+    
     print(f"Image saved to {output_file}")
-    print(f"Prompt: {result['prompt']}")
-    print(f"Dimensions: {result['dimensions']}")
+    print(f"Prompt: {prompt}")
+    print(f"Dimensions: {result_image.size}")
 
 
 if __name__ == "__main__":
