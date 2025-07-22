@@ -4,14 +4,14 @@ aiodns==3.5.0
     # via aiohttp
 aiohappyeyeballs==2.6.1
     # via aiohttp
-aiohttp==3.12.13
+aiohttp==3.12.14
     # via
     #   aiohttp-retry
     #   runpod
     #   torch-geometric
 aiohttp-retry==2.9.1
     # via runpod
-aiosignal==1.3.2
+aiosignal==1.4.0
     # via aiohttp
 annotated-types==0.7.0
     # via pydantic
@@ -28,19 +28,20 @@ backoff==2.2.1
     # via runpod
 bcrypt==4.3.0
     # via paramiko
-boto3==1.38.44
+boto3==1.39.10
     # via runpod
-botocore==1.38.44
+botocore==1.39.10
     # via
     #   boto3
     #   s3transfer
 brotli==1.1.0
     # via aiohttp
-certifi==2025.6.15
+certifi==2025.7.14
     # via
     #   httpcore
     #   httpx
     #   requests
+    #   sentry-sdk
 cffi==1.17.1
     # via
     #   cryptography
@@ -58,7 +59,7 @@ cloudpickle==3.1.1
     # via tetra-rp
 colorama==0.4.6
     # via runpod
-cryptography==45.0.4
+cryptography==45.0.5
     # via
     #   paramiko
     #   runpod
@@ -67,23 +68,28 @@ diffusers==0.34.0
 dnspython==2.7.0
     # via email-validator
 email-validator==2.2.0
-    # via fastapi
+    # via
+    #   fastapi
+    #   pydantic
 exceptiongroup==1.3.0
     # via anyio
-fastapi==0.115.14
+fastapi==0.116.1
     # via runpod
-fastapi-cli==0.0.7
+fastapi-cli==0.0.8
     # via fastapi
+fastapi-cloud-cli==0.1.4
+    # via fastapi-cli
 filelock==3.18.0
     # via
     #   diffusers
     #   huggingface-hub
+    #   runpod
     #   torch
 frozenlist==1.7.0
     # via
     #   aiohttp
     #   aiosignal
-fsspec==2025.5.1
+fsspec==2025.7.0
     # via
     #   huggingface-hub
     #   torch
@@ -99,8 +105,10 @@ httpcore==1.0.9
 httptools==0.6.4
     # via uvicorn
 httpx==0.28.1
-    # via fastapi
-huggingface-hub==0.33.1
+    # via
+    #   fastapi
+    #   fastapi-cloud-cli
+huggingface-hub==0.33.4
     # via diffusers
 idna==3.10
     # via
@@ -134,7 +142,7 @@ mdurl==0.1.2
     # via markdown-it-py
 mpmath==1.3.0
     # via sympy
-multidict==6.5.1
+multidict==6.6.3
     # via
     #   aiohttp
     #   yarl
@@ -147,7 +155,7 @@ numpy==2.0.2
     #   scikit-learn
     #   scipy
     #   torch-geometric
-orjson==3.10.18
+orjson==3.11.0
     # via fastapi
 packaging==25.0
     # via huggingface-hub
@@ -155,7 +163,7 @@ paramiko==3.5.1
     # via runpod
 pfzy==0.3.4
     # via inquirerpy
-pillow==11.2.1
+pillow==11.3.0
     # via
     #   tetra-examples (pyproject.toml)
     #   diffusers
@@ -178,6 +186,7 @@ pycparser==2.22
 pydantic==2.11.7
     # via
     #   fastapi
+    #   fastapi-cloud-cli
     #   pydantic-extra-types
     #   pydantic-settings
 pydantic-core==2.33.2
@@ -218,11 +227,15 @@ rich==14.0.0
     # via
     #   rich-toolkit
     #   typer
-rich-toolkit==0.14.7
-    # via fastapi-cli
-runpod==1.7.12
+rich-toolkit==0.14.8
+    # via
+    #   fastapi-cli
+    #   fastapi-cloud-cli
+rignore==0.6.4
+    # via fastapi-cloud-cli
+runpod==1.7.13
     # via tetra-rp
-s3transfer==0.13.0
+s3transfer==0.13.1
     # via boto3
 safetensors==0.5.3
     # via diffusers
@@ -230,17 +243,19 @@ scikit-learn==1.6.1
     # via tetra-examples (pyproject.toml)
 scipy==1.13.1
     # via scikit-learn
+sentry-sdk==2.33.2
+    # via fastapi-cloud-cli
 shellingham==1.5.4
     # via typer
 six==1.17.0
     # via python-dateutil
 sniffio==1.3.1
     # via anyio
-starlette==0.46.2
+starlette==0.47.2
     # via fastapi
 sympy==1.14.0
     # via torch
-tetra-rp==0.4.2
+tetra-rp==0.8.0
     # via tetra-examples (pyproject.toml)
 threadpoolctl==3.6.0
     # via scikit-learn
@@ -260,9 +275,12 @@ tqdm==4.67.1
 tqdm-loggable==0.2
     # via runpod
 typer==0.16.0
-    # via fastapi-cli
-typing-extensions==4.14.0
     # via
+    #   fastapi-cli
+    #   fastapi-cloud-cli
+typing-extensions==4.14.1
+    # via
+    #   aiosignal
     #   anyio
     #   exceptiongroup
     #   fastapi
@@ -289,10 +307,12 @@ urllib3==1.26.20
     #   botocore
     #   requests
     #   runpod
-uvicorn==0.34.3
+    #   sentry-sdk
+uvicorn==0.35.0
     # via
     #   fastapi
     #   fastapi-cli
+    #   fastapi-cloud-cli
 uvloop==0.21.0
     # via uvicorn
 watchdog==6.0.0
