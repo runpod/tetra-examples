@@ -30,41 +30,6 @@ def cpu_data_processing(data):
     }
 
 
-# Define another function to run on Runpod CPU
-@remote(
-    resource_config=cpu_live_serverless,
-    dependencies=["psutil",],
-)
-def inspect_cpu_machine():
-    import platform
-    import psutil
-
-    print("CPU Information")
-    print("----------------")
-    print(f"Processor: {platform.processor()}")
-    print(f"Machine: {platform.machine()}")
-    print(f"Platform: {platform.platform()}")
-    print(f"CPU cores: {psutil.cpu_count(logical=False)}")
-    print(f"Logical CPUs: {psutil.cpu_count(logical=True)}")
-    print(f"CPU Frequency: {psutil.cpu_freq().max:.2f} MHz")
-    print()
-
-    print("Memory Information")
-    print("------------------")
-    virtual_mem = psutil.virtual_memory()
-    print(f"Total RAM: {virtual_mem.total / 1e9:.2f} GB")
-    print(f"Available RAM: {virtual_mem.available / 1e9:.2f} GB")
-    print(f"Used RAM: {virtual_mem.used / 1e9:.2f} GB")
-    print()
-
-    print("OS Information")
-    print("--------------")
-    print(f"System: {platform.system()}")
-    print(f"Release: {platform.release()}")
-    print(f"Version: {platform.version()}")
-    print(f"Architecture: {platform.architecture()[0]}")
-    print()
-
 async def main_live_cpu_example():
     # Sample data
     sample_data = [
@@ -86,9 +51,6 @@ async def main_live_cpu_example():
     print(f"Processed {result['row_count']} rows on {result['platform']}")
     print(f"Mean values: {result['mean_values']}")
     print("\n")
-
-    # Run the other function to inspect the CPU machine
-    await inspect_cpu_machine()
 
 
 if __name__ == "__main__":
