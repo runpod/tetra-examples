@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.0](https://github.com/runpod/tetra-examples/compare/v0.2.0...v0.3.0) (2025-08-05)
+
+
+### Features
+
+* AE-924 Add text gen example ([#20](https://github.com/runpod/tetra-examples/issues/20)) ([e101fdb](https://github.com/runpod/tetra-examples/commit/e101fdb7ef37617ebc5765d08e3d8a89ed951feb))
+* Inspect sandbox runtime example ([#21](https://github.com/runpod/tetra-examples/issues/21)) ([9befc5b](https://github.com/runpod/tetra-examples/commit/9befc5bb84c99fec666f2cfb90b2506e541f872e))
+* updated dependencies to latest versions ([#18](https://github.com/runpod/tetra-examples/issues/18)) ([98fb64b](https://github.com/runpod/tetra-examples/commit/98fb64bf195cbf56a77e03335de623b98b01c4f9))
+
 ## [0.2.0](https://github.com/runpod/tetra-examples/compare/v0.1.0...v0.2.0) (2025-06-26)
 
 
