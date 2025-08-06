@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "tetra-examples"
-version = "0.3.0"
+version = "0.4.0"
 description = "A collection of examples of using Tetra to run workflows on Runpod"
 readme = "README.md"
 requires-python = ">=3.9,<3.14"

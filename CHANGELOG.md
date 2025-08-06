@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/runpod/tetra-examples/compare/v0.3.0...v0.4.0) (2025-08-06)
+
+
+### Features
+
+* AE-923 Add OpenAI GPT OSS inference example ([#22](https://github.com/runpod/tetra-examples/issues/22)) ([e0a79eb](https://github.com/runpod/tetra-examples/commit/e0a79eb957ed85708cbbcb31f13c3f82670ef887))
+
 ## [0.3.0](https://github.com/runpod/tetra-examples/compare/v0.2.0...v0.3.0) (2025-08-05)
 
 
