@@ -47,15 +47,15 @@ class OpenAIGPTOSSInference:
 
 
 async def main():
-    print("🚀 Testing OpenAI GPT OSS Inference")
+    print("🚀 OpenAI GPT OSS Inference")
     print("=" * 50)
 
     # Create instance
     print("\n1️⃣ Creating OpenAI GPT OSS instance...")
     gpt = OpenAIGPTOSSInference()
 
-    # Test generation
-    print("\n2️⃣ Testing text generation:")
+    # Generate text
+    print("\n2️⃣ Generating text:")
     messages = [
         {"role": "user", "content": "Explain quantum mechanics clearly and concisely."},
     ]
