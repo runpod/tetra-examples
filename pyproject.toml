@@ -44,7 +44,7 @@ Issues = "https://github.com/runpod/tetra-examples/issues"
 Documentation = "https://docs.runpod.io/"
 
 [tool.hatch.build.targets.wheel]
-packages = ["examples"]
+packages = ["."]
 
 [tool.hatch.build.targets.sdist]
 include = [
