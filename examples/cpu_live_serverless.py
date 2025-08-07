@@ -1,10 +1,13 @@
 import asyncio
 from tetra_rp import remote, LiveServerless, CpuInstanceType
+from shared import shared_volume
+
 
 # Configure a Live CPU Serverless Endpoint
 cpu_live_serverless = LiveServerless(
     name="example_cpu_live_serverless",
     instanceIds=[CpuInstanceType.CPU3G_1_4],
+    networkVolume=shared_volume,
 )
 
 
