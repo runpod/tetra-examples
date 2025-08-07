@@ -5,7 +5,7 @@ from shared import shared_volume
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_16],
-    name="simple_example",
+    name="example_class_based",
     networkVolume=shared_volume,
 )
 

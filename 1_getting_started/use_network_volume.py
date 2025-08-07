@@ -1,24 +1,27 @@
 import asyncio
 from tetra_rp import remote, LiveServerless, GpuGroup, NetworkVolume
 
+
 # Option 1: Create a NetworkVolume object
 network_vol = NetworkVolume(
-    name="my_shared_storage",
+    name="example_network_volume",
     size=20  # 20GB
 )
 
 gpu_config_with_volume = LiveServerless(
     gpus=[GpuGroup.AMPERE_16],
-    name="volume_example",
+    name="example_use_network_volume",
     networkVolume=network_vol
 )
 
+
 # Option 2: Use existing network volume ID directly
-gpu_config_with_id = LiveServerless(
-    gpus=[GpuGroup.AMPERE_16],
-    name="volume_example",
-    networkVolumeId="your-existing-volume-id"
-)
+# gpu_config_with_volume = LiveServerless(
+#     gpus=[GpuGroup.AMPERE_16],
+#     name="example_use_network_volume",
+#     networkVolumeId="your-existing-volume-id",
+# )
+
 
 # Option 3: Use an shared NetworkVolume
 # from shared import shared_volume

@@ -6,7 +6,7 @@ from shared import shared_volume
 # Configuration for a GPU resource
 gpu_config = LiveServerless(
     gpus=[GpuGroup.HOPPER_141],
-    name="example_matrix_operations_server",
+    name="example_matrix_operations",
     networkVolume=shared_volume,
 )
 
