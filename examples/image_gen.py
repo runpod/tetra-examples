@@ -3,11 +3,14 @@ import base64
 import io
 from PIL import Image
 from tetra_rp import remote, LiveServerless, GpuGroup
+from shared import shared_volume
+
 
 # Configuration for a GPU resource
 sd_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_80],
     name="example_image_gen_server",
+    networkVolume=shared_volume,
 )
 
 

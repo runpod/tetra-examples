@@ -1,9 +1,12 @@
 import asyncio
 from tetra_rp import remote, LiveServerless, GpuGroup
+from shared import shared_volume
+
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_16],
     name="simple_example",
+    networkVolume=shared_volume,
 )
 
 @remote(resource_config=gpu_config)

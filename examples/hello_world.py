@@ -1,5 +1,6 @@
 import asyncio
 from tetra_rp import remote, LiveServerless, GpuGroup, CpuInstanceType
+from shared import shared_volume
 
 
 gpu_config = LiveServerless(
@@ -7,6 +8,7 @@ gpu_config = LiveServerless(
     gpus=[
         GpuGroup.AMPERE_48,
     ],
+    networkVolume=shared_volume,
 )
 
 cpu_config = LiveServerless(
@@ -14,6 +16,7 @@ cpu_config = LiveServerless(
     instanceIds=[
         CpuInstanceType.CPU3C_1_2,
     ],
+    networkVolume=shared_volume,
 )
 
 

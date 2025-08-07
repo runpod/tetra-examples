@@ -20,6 +20,14 @@ gpu_config_with_id = LiveServerless(
     networkVolumeId="your-existing-volume-id"
 )
 
+# Option 3: Use an shared NetworkVolume
+# from shared import shared_volume
+# gpu_config_with_volume = LiveServerless(
+#     name="example_use_network_volume",
+#     networkVolume=shared_volume,
+# )
+
+
 @remote(resource_config=gpu_config_with_volume)
 class VolumeExample:
     def __init__(self):
