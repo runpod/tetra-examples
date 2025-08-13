@@ -28,6 +28,7 @@ class ChatterboxTTSInference:
         from chatterbox.tts import ChatterboxTTS
         import io
 
+        self.io = io
         self.ta = ta
         self.model = ChatterboxTTS.from_pretrained(device="cuda")
         print("Chatterbox TTS model loaded successfully!")
@@ -40,7 +41,7 @@ class ChatterboxTTSInference:
         wav = self.model.generate(prompt)
 
         # Create buffer and save audio data to return
-        buffer = io.BytesIO()
+        buffer = self.io.BytesIO()
         self.ta.save(buffer, wav, self.model.sr, format="wav")
         buffer.seek(0)
 
