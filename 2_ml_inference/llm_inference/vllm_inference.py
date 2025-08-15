@@ -13,11 +13,13 @@
 
 import asyncio
 from tetra_rp import remote, LiveServerless, GpuGroup
+from shared import shared_volume
 
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_16],
-    name="batch_vllm_exec_",
+    name="example_vllm_inference",
+    networkVolume=shared_volume,
 )
 
 @remote(
