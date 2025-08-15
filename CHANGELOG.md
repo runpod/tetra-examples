@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/runpod/tetra-examples/compare/v0.4.0...v0.5.0) (2025-08-14)
+
+
+### Features
+
+* AE-1068 Add modular LLM to TTS pipeline ([#26](https://github.com/runpod/tetra-examples/issues/26)) ([860df85](https://github.com/runpod/tetra-examples/commit/860df85710a00f2233f335bb0831552b4d94a284))
+* AE-926  Add Chatterbox TTS inference example ([#24](https://github.com/runpod/tetra-examples/issues/24)) ([d67970b](https://github.com/runpod/tetra-examples/commit/d67970b2fa3e16e907e29c753cd7c204ff2c56c0))
+
 ## [0.4.0](https://github.com/runpod/tetra-examples/compare/v0.3.0...v0.4.0) (2025-08-06)
 
 
