@@ -17,7 +17,7 @@ from tetra_rp import remote, LiveServerless, GpuGroup
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_16],
-    name="batch_vllm_exec_",
+    name="example_vllm_inference",
 )
 
 @remote(

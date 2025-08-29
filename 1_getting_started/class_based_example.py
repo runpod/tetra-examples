@@ -3,7 +3,7 @@ from tetra_rp import remote, LiveServerless, GpuGroup
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_16],
-    name="simple_example",
+    name="example_class_based",
 )
 
 @remote(resource_config=gpu_config)

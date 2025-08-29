@@ -13,9 +13,9 @@ network_vol = NetworkVolume(name="openai_shared_storage", size=100)
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_80],
-    name="openai_gpt_oss_inference",
     networkVolume=network_vol,
     workersMax=1,
+    name="example_openai_gpt_oss_inference",
 )
 
 
