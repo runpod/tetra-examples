@@ -18,6 +18,7 @@ gpu_config = LiveServerless(
 @remote(
     resource_config=gpu_config,
     dependencies=["transformers", "kernels", "torch", "accelerate"],
+    hf_models_to_cache=["openai/gpt-oss-20b"],
 )
 class OpenAIGPTOSSInference:
     def __init__(self):

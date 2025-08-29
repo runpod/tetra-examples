@@ -23,6 +23,7 @@ gpu_config = LiveServerless(
 @remote(
     resource_config=gpu_config,
     dependencies=["vllm"],
+    hf_models_to_cache=["facebook/opt-125m"],
 )
 class MinimalVLLM:
     def __init__(self):
