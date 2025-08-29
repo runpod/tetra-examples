@@ -14,11 +14,10 @@ dev:
 install:
 	uv sync --all-groups
 
-update: install
+update:
+	uv sync --upgrade
 	uv lock --upgrade
-	uv sync --all-groups
 	uv pip compile --upgrade pyproject.toml > requirements.txt
-	uv pip sync requirements.txt
 
 venv:
 	python3 -m venv .venv
