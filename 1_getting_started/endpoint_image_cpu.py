@@ -12,9 +12,9 @@ import asyncio
 from tetra_rp import remote, CpuServerlessEndpoint
 
 
-# Configuration for a CPU endpoint using runpod/mock-worker Docker image
+# Configuration for a CPU endpoint using runpod/mock-worker
 sls_cpu_endpoint = CpuServerlessEndpoint(
-    name="example_cpu_endpoint",
+    name="example_endpoint_image_cpu",
     imageName="runpod/mock-worker:dev",  # Docker image
 )
 
