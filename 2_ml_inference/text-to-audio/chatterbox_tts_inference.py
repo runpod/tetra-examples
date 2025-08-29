@@ -7,14 +7,12 @@
 # - Local audio file saving in WAV format
 
 import asyncio
-import io
 from pathlib import Path
 from tetra_rp import remote, LiveServerless, GpuGroup
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_80],
     name="example_chatterbox_tts_inference",
-    workersMax=1,
 )
 
 
