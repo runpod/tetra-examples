@@ -9,16 +9,16 @@ network_vol = NetworkVolume(
 
 gpu_config_with_volume = LiveServerless(
     gpus=[GpuGroup.AMPERE_16],
-    name="volume_example",
+    name="example_use_network_volume",
     networkVolume=network_vol
 )
 
 # Option 2: Use existing network volume ID directly
-gpu_config_with_id = LiveServerless(
-    gpus=[GpuGroup.AMPERE_16],
-    name="volume_example",
-    networkVolumeId="your-existing-volume-id"
-)
+# gpu_config_with_volume = LiveServerless(
+#     gpus=[GpuGroup.AMPERE_16],
+#     name="example_use_network_volume",
+#     networkVolumeId="your-existing-volume-id"
+# )
 
 @remote(resource_config=gpu_config_with_volume)
 class VolumeExample:
