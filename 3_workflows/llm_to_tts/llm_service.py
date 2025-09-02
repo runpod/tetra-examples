@@ -1,7 +1,7 @@
 """
 LLM Text Generation Service
 
-High-performance text generation service using OpenAI GPT OSS model on A100 GPUs.
+High-performance text generation service using Qwen3-4B-Instruct model on A100 GPUs.
 Handles text generation with proper error handling and response formatting.
 """
 
@@ -12,53 +12,65 @@ from config import get_llm_config
 @remote(
     resource_config=get_llm_config(),
     dependencies=["transformers", "kernels", "torch", "accelerate"],
-    system_dependencies=["build-essential"]
+    system_dependencies=["build-essential"],
 )
 class LLMTextGenerator:
-    """LLM service for generating text content using OpenAI GPT OSS model."""
-    
+    """LLM service for generating text content using Qwen3-4B-Instruct model."""
+
     def __init__(self) -> None:
-        """Initialize the LLM text generation pipeline."""
-        from transformers import pipeline
-        
-        model_id = "openai/gpt-oss-20b"
-        
-        self.pipe = pipeline(
-            "text-generation",
-            model=model_id,
-            torch_dtype="auto",
-            device_map="auto"
+        """Initialize the LLM text generation with Qwen model."""
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+
+        model_name = "Qwen/Qwen3-4B-Instruct-2507"
+
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModelForCausalLM.from_pretrained(
+            model_name, torch_dtype="auto", device_map="auto"
         )
-        
-        print("LLM Text Generator initialized on A100")
-    
-    def generate_text(self, prompt: str, max_new_tokens: int = 256):
+
+        print("LLM Text Generator initialized with Qwen3-4B-Instruct on A100")
+
+    def generate_text(self, prompt: str, max_new_tokens: int = 50):
         """
         Generate text content from a given prompt.
-        
+
         Args:
             prompt: Input text prompt for generation
             max_new_tokens: Maximum number of tokens to generate
-            
+
         Returns:
             Dictionary containing generated text and metadata
         """
         print(f"Generating text for: '{prompt[:50]}...'")
-        
+
         try:
             messages = [
-                {"role": "system", "content": "You are an educator and motivational speaker."},
-                {"role": "user", "content": prompt}
+                {
+                    "role": "system",
+                    "content": "You are an educator and motivational speaker. Answer just in 50 tokens.",
+                },
+                {"role": "user", "content": prompt},
             ]
-            
-            outputs = self.pipe(messages, max_new_tokens=max_new_tokens)
-            raw_response = outputs[0]["generated_text"][-1]
-            
-            generated_text = self._extract_content(raw_response)
+
+            text = self.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+            )
+            model_inputs = self.tokenizer([text], return_tensors="pt").to(
+                self.model.device
+            )
+
+            generated_ids = self.model.generate(
+                **model_inputs, max_new_tokens=max_new_tokens
+            )
+            output_ids = generated_ids[0][len(model_inputs.input_ids[0]) :].tolist()
+
+            generated_text = self.tokenizer.decode(output_ids, skip_special_tokens=True)
             word_count = len(generated_text.split())
-            
+
             print(f"Generated text: {generated_text[:100]}...")
-            
+
             return {
                 "original_prompt": prompt,
                 "generated_text": generated_text,
@@ -66,28 +78,14 @@ class LLMTextGenerator:
                 "word_count": word_count,
                 "service": "llm_generator",
                 "gpu_type": "A100",
-                "success": True
+                "success": True,
             }
-            
+
         except Exception as e:
             print(f"Error in text generation: {str(e)}")
             return {
                 "error": str(e),
                 "original_prompt": prompt,
                 "service": "llm_generator",
-                "success": False
+                "success": False,
             }
-    
-    def _extract_content(self, raw_response) -> str:
-        """Extract clean content from model response."""
-        if isinstance(raw_response, dict) and 'content' in raw_response:
-            content = raw_response['content']
-            if "assistantfinal" in content:
-                return content.split("assistantfinal", 1)[-1].strip()
-            return content
-        elif isinstance(raw_response, str):
-            if "assistantfinal" in raw_response:
-                return raw_response.split("assistantfinal", 1)[-1].strip()
-            return raw_response
-        else:
-            return str(raw_response)
