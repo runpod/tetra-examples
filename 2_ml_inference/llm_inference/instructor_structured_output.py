@@ -21,9 +21,9 @@ MODEL_NAME = "Qwen/Qwen3-0.6B"
 
 # Configure the serverless GPU endpoint for our model deployment
 # We specify multiple GPU types to improve availability and reduce cold start times
-gpu_config = ServerlessEndpoint(
+gpu_serverless_endpoint = ServerlessEndpoint(
     gpus=[GpuGroup.AMPERE_24, GpuGroup.ADA_24],
-    name="batch_vllm_exec",
+    name="instructor_vllm_example_gpu",
     env={
         "MODEL_NAME": MODEL_NAME,
         "MAX_CONCURRENCY": "5",  # Our model is small, so we should be able to handle multiple concurrent requests
@@ -34,13 +34,13 @@ gpu_config = ServerlessEndpoint(
 
 # Configure a Live CPU Serverless Endpoint
 cpu_live_serverless = LiveServerless(
-    name="cpu_serverlessabc",
+    name="instructor_vllm_example_cpu",
     env={"MODEL_NAME": MODEL_NAME},
     instanceIds=[CpuInstanceType.CPU3G_8_32],
 )
 
 # this will generate an empty first request, but we do this to initialize the endpoint
-@remote(resource_config=gpu_config)
+@remote(resource_config=gpu_serverless_endpoint)
 def init_endpoint():
     return {"input": {"prompt": "hello, world"}}
 
@@ -109,7 +109,7 @@ async def main():
     await init_endpoint()
     client = RemoteCPUClient()
 
-    gpu_server_url = f"https://api.runpod.ai/v2/{gpu_config.id}/openai/v1"
+    gpu_server_url = f"https://api.runpod.ai/v2/{gpu_serverless_endpoint.id}/openai/v1"
     print("GPU server url: ", gpu_server_url)
 
     # call our classification function, that will run on a remote endpoint
