@@ -1,9 +1,4 @@
-import asyncio
-import os
-from tetra_rp import remote, ServerlessEndpoint, GpuGroup, LiveServerless, CpuInstanceType
-
 # # Structured Item Metadata Extraction using `instructor` and RunPod
-
 # This example demonstrates how to use the `instructor` library to extract structured item metadata
 # from unstructured product descriptions using a language model hosted on RunPod's serverless infrastructure.
 
@@ -12,15 +7,25 @@ from tetra_rp import remote, ServerlessEndpoint, GpuGroup, LiveServerless, CpuIn
 # pricing engines, or e-commerce platforms to programmatically process product information
 # that would otherwise require manual data entry.
 
+# Tetra will handle deploying our inference engine as a server onto a Runpod GPU endpoint,
+# and a client using the instructor library on a Runpod CPU `LiveServerless` resource.
+# The image used for the GPU endpoint and Runpod's infra will generate a ready-made 
+# OpenAI compatible endpoint serving the model we specify, and the CPU endpoint will send requests to it as a client.
+# with the instructor library.
+
+# We will use Qwen3-0.6B, beacause it's a compact model that's efficient for structured data extraction tasks
+# When we configure our endpoint, we specify multiple GPU types to improve availability and reduce cold start times
+
+import asyncio
+import os
+from tetra_rp import remote, ServerlessEndpoint, GpuGroup, LiveServerless, CpuInstanceType
+
 # Retrieve the RunPod API key from environment variables
 # This key is required to authenticate with RunPod's serverless API
 RUNPOD_API_KEY = os.environ["RUNPOD_API_KEY"]
-
-# Qwen3-0.6B is a compact model that's efficient for structured data extraction tasks
 MODEL_NAME = "Qwen/Qwen3-0.6B"
 
 # Configure the serverless GPU endpoint for our model deployment
-# We specify multiple GPU types to improve availability and reduce cold start times
 gpu_serverless_endpoint = ServerlessEndpoint(
     gpus=[GpuGroup.AMPERE_24, GpuGroup.ADA_24],
     name="instructor_vllm_example_gpu",
@@ -112,7 +117,7 @@ async def main():
     gpu_server_url = f"https://api.runpod.ai/v2/{gpu_serverless_endpoint.id}/openai/v1"
     print("GPU server url: ", gpu_server_url)
 
-    # call our classification function, that will run on a remote endpoint
+    # call our classification function that will run on a remote endpoint
     await client.classify_items(gpu_server_url, RUNPOD_API_KEY)
 
 if __name__ == "__main__":
