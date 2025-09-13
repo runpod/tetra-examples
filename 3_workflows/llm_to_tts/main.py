@@ -46,12 +46,11 @@ async def main() -> None:
     print("🎼 Creating pipeline orchestrator...")
     orchestrator = LLMToTTSOrchestrator(llm_service, tts_service)
     
-    # Demo prompts showcasing different use cases
+    # Demo prompts 
     demo_prompts = [
         "Explain the importance of renewable energy in simple terms",
         "Tell me an inspiring story about space exploration",
         "Describe the benefits of reading books for personal growth",
-        "Share a motivational message for students preparing for exams"
     ]
     
     print(f"\n🎬 Running {len(demo_prompts)} pipeline demonstrations...")
@@ -73,7 +72,7 @@ async def main() -> None:
     print(f"📁 Results saved in: {stats['output_directory']}")
     
     if stats['successful_runs'] > 0:
-        print(f"\n🎧 Play your generated audio files from:")
+        print("\n🎧 Play your generated audio files from:")
         print(f"   {orchestrator.audio_dir.absolute()}")
 
 
