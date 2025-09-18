@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.0](https://github.com/runpod/tetra-examples/compare/v0.5.0...v0.6.0) (2025-09-18)
+
+
+### Features
+
+* Instructor reference example ([#31](https://github.com/runpod/tetra-examples/issues/31)) ([3f411bb](https://github.com/runpod/tetra-examples/commit/3f411bb94143d99ac2017de2b44dac211f19bf94))
+* simple comfyui worker example ([#32](https://github.com/runpod/tetra-examples/issues/32)) ([4bbb495](https://github.com/runpod/tetra-examples/commit/4bbb495787414f1503b7ad4c54b0ba0892c5c984))
+* updated examples to match latest Tetra's changes ([#28](https://github.com/runpod/tetra-examples/issues/28)) ([4d42628](https://github.com/runpod/tetra-examples/commit/4d42628364257b2ed7961b2f439fc168c796c06e))
+
+
+### Bug Fixes
+
+* AE-1112 Fix the language model for the workflow ([#29](https://github.com/runpod/tetra-examples/issues/29)) ([f840c72](https://github.com/runpod/tetra-examples/commit/f840c723f6713c4c7e3007873a5369b214dc15cb))
+
 ## [0.5.0](https://github.com/runpod/tetra-examples/compare/v0.4.0...v0.5.0) (2025-08-14)
 
 
