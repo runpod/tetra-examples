@@ -118,7 +118,7 @@ class LLMToTTSOrchestrator:
             results.append(result)
             
             if result.get("success"):
-                print(f"   ✅ Pipeline completed successfully")
+                print("   ✅ Pipeline completed successfully")
             else:
                 print(f"   ❌ Pipeline failed: {result.get('error')}")
         

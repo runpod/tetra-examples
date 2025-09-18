@@ -14,8 +14,8 @@ from tetra_rp import remote, ServerlessEndpoint
 
 # Configuration for a GPU endpoint using runpod/mock-worker
 sls_gpu_endpoint = ServerlessEndpoint(
-    name="example_gpu_endpoint",
-    imageName="runpod/mock-worker:dev",  # Docker image usage
+    name="example_endpoint_image_gpu",
+    imageName="runpod/mock-worker:dev",  # Docker image
 )
 
 

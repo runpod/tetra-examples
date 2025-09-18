@@ -19,13 +19,14 @@ from tetra_rp import remote, LiveServerless, GpuGroup
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_16],
-    name="simple_sd_exec",
+    name="example_image_generation",
 )
 
 
 @remote(
     resource_config=gpu_config,
     dependencies=["diffusers", "torch", "transformers", "accelerate", "xformers"],
+    hf_models_to_cache=["runwayml/stable-diffusion-v1-5"],
 )
 class SimpleSD:
     def __init__(self):
@@ -135,7 +136,7 @@ async def main():
 
     # Single prompt generation
     print("\nGenerating image...")
-    prompt = "A beautiful sunset over mountains, digital art, highly detailedand a cat"
+    prompt = "A beautiful sunset over mountains, digital art, highly detailed and a cat"
 
     result = await sd.generate_image(prompt)
 

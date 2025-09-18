@@ -6,22 +6,20 @@
 # - Text generation from conversational messages
 
 import asyncio
-from tetra_rp import remote, LiveServerless, GpuGroup, NetworkVolume
-
-network_vol = NetworkVolume(name="openai_shared_storage", size=100)
+from tetra_rp import remote, LiveServerless, GpuGroup
 
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_80],
-    name="openai_gpt_oss_inference",
-    networkVolume=network_vol,
-    workersMax=1,
+    name="example_openai_gpt_oss_inference",
 )
 
 
 @remote(
     resource_config=gpu_config,
     dependencies=["transformers", "kernels", "torch", "accelerate"],
+    hf_models_to_cache=["openai/gpt-oss-20b"],
+    system_dependencies=["build-essential"]
 )
 class OpenAIGPTOSSInference:
     def __init__(self):

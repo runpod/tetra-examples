@@ -17,12 +17,13 @@ from tetra_rp import remote, LiveServerless, GpuGroup
 
 gpu_config = LiveServerless(
     gpus=[GpuGroup.AMPERE_16],
-    name="batch_vllm_exec_",
+    name="example_vllm_inference",
 )
 
 @remote(
     resource_config=gpu_config,
     dependencies=["vllm"],
+    hf_models_to_cache=["facebook/opt-125m"],
 )
 class MinimalVLLM:
     def __init__(self):
