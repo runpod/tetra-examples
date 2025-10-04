@@ -26,7 +26,6 @@ gpu_config = LiveServerless(
 @remote(
     resource_config=gpu_config,
     dependencies=["diffusers", "torch", "transformers", "accelerate", "xformers"],
-    hf_models_to_cache=["runwayml/stable-diffusion-v1-5"],
 )
 class SimpleSD:
     def __init__(self):
